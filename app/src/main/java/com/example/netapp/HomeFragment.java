@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
-import com.example.netapp.chapters.ChapterListActivity;
+import com.example.netapp.chapters_list.ChapterListActivity;
+import com.example.netapp.quiz.QuizModulesActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
         imageView.setBackgroundResource(image);
 
         viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(2000);
+        viewFlipper.setFlipInterval(1500);
         viewFlipper.setAutoStart(true);
 
         viewFlipper.setInAnimation(getActivity(), android.R.anim.slide_in_left);
@@ -81,4 +82,15 @@ public class HomeFragment extends Fragment {
         Intent starter = new Intent(context, ChapterListActivity.class);
         context.startActivity(starter);
     }
+
+    public static void startQuiz(Context context) {
+        Intent starter = new Intent(context, QuizModulesActivity.class);
+        //starter.putExtra();
+        context.startActivity(starter);
+    }
 }
+
+/*
+
+#37474F
+ */

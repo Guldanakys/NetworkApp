@@ -1,4 +1,4 @@
-package com.example.netapp.chapters;
+package com.example.netapp.chapters_list;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,16 +13,16 @@ import java.util.List;
 
 public class ChapterListActivity extends AppCompatActivity implements ChapterListView {
 
-    private RecyclerView recyclerView;
+    private RecyclerView mRecyclerView;
 
-    private PostAdapter postAdapter;
+    private PostAdapter mPostAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter_list);
 
-        recyclerView = findViewById(R.id.posts_recycler);
+        mRecyclerView = findViewById(R.id.posts_recycler);
 
         ChapterListPresenter chapterListPresenter = new ChapterListPresenter(this);
         chapterListPresenter.getChapters();
@@ -30,10 +30,10 @@ public class ChapterListActivity extends AppCompatActivity implements ChapterLis
 
     @Override
     public void displayChapters(List<Post> posts) {
-        postAdapter = new PostAdapter(posts);
+        mPostAdapter = new PostAdapter(this, posts);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ChapterListActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(postAdapter);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(mPostAdapter);
     }
 
     @Override

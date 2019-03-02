@@ -5,17 +5,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static Retrofit retrofit;
+    private static Retrofit sRetrofit;
 
     private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
 
     public ApiInterface getAPI() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+        if (sRetrofit == null) {
+            sRetrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit.create(ApiInterface.class);
+        return sRetrofit.create(ApiInterface.class);
     }
 }

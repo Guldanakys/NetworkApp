@@ -1,4 +1,4 @@
-package com.example.netapp.chapters;
+package com.example.netapp.chapters_list;
 
 import com.example.netapp.models.Post;
 

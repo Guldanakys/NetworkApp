@@ -1,4 +1,4 @@
-package com.example.netapp.chapters;
+package com.example.netapp.chapters_list;
 
 import com.example.netapp.models.Post;
 import com.example.netapp.network.ApiClient;
@@ -11,32 +11,33 @@ import retrofit2.Response;
 
 public class ChapterListPresenter {
 
-    private ChapterListView chapterListView;
+    private ChapterListView mChapterListView;
 
-    private ApiClient apiClient;
+    private ApiClient mApiClient;
 
     public  ChapterListPresenter(ChapterListView view) {
-        this.chapterListView = view;
 
-        if (this.apiClient == null) {
-            this.apiClient = new ApiClient();
+        mChapterListView = view;
+
+        if (mApiClient == null) {
+            mApiClient = new ApiClient();
         }
     }
 
     public void getChapters() {
-        apiClient
+        mApiClient
                 .getAPI()
                 .getAllPosts()
                 .enqueue(new Callback<List<Post>>() {
                     @Override
                     public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                         List<Post> postList = response.body();
-                        chapterListView.displayChapters(postList);
+                        mChapterListView.displayChapters(postList);
                     }
 
                     @Override
                     public void onFailure(Call<List<Post>> call, Throwable t) {
-                        chapterListView.displayError();
+                        mChapterListView.displayError();
                     }
                 });
     }

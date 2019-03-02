@@ -2,41 +2,46 @@ package com.example.netapp.models;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Post {
 
-    private int id;
+    @SerializedName("id")
+    private int mId;
 
-    private String title;
+    @SerializedName("title")
+    private String mTitle;
 
-    private String body;
+    @SerializedName("body")
+    private String mBody;
 
     public int getId() {
-        return id;
+        return mId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        mId = id;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        mTitle = title;
     }
 
     public String getBody() {
-        return body;
+        return mBody;
     }
 
     public void setBody(String body) {
-        this.body = body;
+        mBody = body;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return "Post - " + id + " " + title + '\'';
+        return "Post - " + mId + " " + mTitle + '\'';
     }
 }
