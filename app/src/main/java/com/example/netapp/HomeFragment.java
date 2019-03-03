@@ -1,4 +1,4 @@
-package com.example.netapp;
+package com.example.netapp.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,15 +15,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.example.netapp.R;
 import com.example.netapp.chapters_list.ChapterListActivity;
 import com.example.netapp.quiz.QuizModulesActivity;
 
 
 public class HomeFragment extends Fragment {
 
-    private ViewFlipper viewFlipper;
+    private ViewFlipper mViewFlipper;
 
-    private CardView chaptersCard;
+    private CardView mChaptersCard;
+
+    private CardView mQuizCard;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -35,17 +38,25 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         int images[] = {R.drawable.slide1, R.drawable.slide2, R.drawable.slide3};
-        viewFlipper = (ViewFlipper) v.findViewById(R.id.image_flipper);
+        mViewFlipper = (ViewFlipper) v.findViewById(R.id.image_flipper);
 
         for (int image : images) {
             flipperImages(image);
         }
 
-        chaptersCard = (CardView) v.findViewById(R.id.chapters_card);
-        chaptersCard.setOnClickListener(new View.OnClickListener() {
+        mChaptersCard = (CardView) v.findViewById(R.id.chapters_card);
+        mChaptersCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startChapters(getActivity());
+            }
+        });
+
+        mQuizCard = (CardView) v.findViewById(R.id.quiz_card);
+        mQuizCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startQuiz(getActivity());
             }
         });
 
@@ -56,12 +67,12 @@ public class HomeFragment extends Fragment {
         ImageView imageView = new ImageView(getActivity());
         imageView.setBackgroundResource(image);
 
-        viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(1500);
-        viewFlipper.setAutoStart(true);
+        mViewFlipper.addView(imageView);
+        mViewFlipper.setFlipInterval(1500);
+        mViewFlipper.setAutoStart(true);
 
-        viewFlipper.setInAnimation(getActivity(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getActivity(), android.R.anim.slide_out_right);
+        mViewFlipper.setInAnimation(getActivity(), android.R.anim.slide_in_left);
+        mViewFlipper.setOutAnimation(getActivity(), android.R.anim.slide_out_right);
     }
 
     @Override
@@ -85,12 +96,6 @@ public class HomeFragment extends Fragment {
 
     public static void startQuiz(Context context) {
         Intent starter = new Intent(context, QuizModulesActivity.class);
-        //starter.putExtra();
         context.startActivity(starter);
     }
 }
-
-/*
-
-#37474F
- */
